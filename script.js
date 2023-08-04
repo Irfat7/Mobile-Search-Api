@@ -29,13 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function startApi() {
     const searchKey = searchBox.value;
     if (searchKey === "") {
-      resetValues()
       clearContainer()
+      resetValues()
       buttonContainer.style.visibility = "hidden";
       errorMessage.style.display = "block";
       return;
     }
-
     errorMessage.style.display = "none";
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchKey}`;
     callApi(url);
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const callApi = (url) => {
     loadingAnimation.style.visibility = "visible";
     setTimeout(() => {
-      resetValues()
+      resetValues();
       fetch(url)
         .then((response) => response.json())
         .then((mobiles) => {
@@ -59,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (allMobileData.length === 0) {
       buttonContainer.style.visibility = "hidden";
       nothingFound.style.visibility = "visible";
+      clearContainer()
       return;
     }
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       buttonContainer.style.visibility = "hidden";
       printElements(allMobileData);
     });
-
+    
     function printElements(arrayOfMobiles) {
       clearContainer();
       nothingFound.style.visibility = "hidden";
@@ -85,17 +85,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        const image = document.createElement("img");
-        image.src = mobile.image;
-
-        const mobileName = document.createElement("p");
-        mobileName.innerText = mobile.phone_name;
-
-        card.appendChild(image);
-        card.appendChild(mobileName);
-
+        card.innerHTML = `
+        <img src="${mobile.image}">
+        <p>${mobile.phone_name}</p>
+        <button onclick="call('${mobile.phone_name}', '${mobile.image}')"  class="btn bg-warning" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Expand</button>
+        `;
         mainContainer.appendChild(card);
       });
     }
   }
 });
+function call(name, image){
+  document.querySelector(".modal-title").innerText=name
+  document.querySelector(".modal-body img").src=image
+}
+

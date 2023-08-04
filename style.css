@@ -1,170 +1,178 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-  }
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+#expand-button {
+  display: none;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em auto;
+  width: 80%;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1em auto;
-    width: 80%;
-    background-color: #f1f1f1;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.search-box {
+  flex: 1;
+  padding: 1em;
+  border: none;
+  background: none;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+}
 
-  .search-box {
-    flex: 1;
-    padding: 1em;
-    border: none;
-    background: none;
-    width: 100%;
-    font-size: 16px;
-    color: #333;
-    outline: none;
-  }
+.search-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  .search-btn {
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+.search-btn:hover {
+  background-color: #555;
+}
 
-  .search-btn:hover {
-    background-color: #555;
-  }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+}
 
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1em;
-  }
+.card {
+  width: 400px;
+  margin: 1em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: card-scale 0.1s linear;
+}
 
-  .card {
-    width: 400px;
-    margin: 1em;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 1em;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, background-color 0.3s;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: card-scale .1s linear ;
+@keyframes card-scale {
+  0% {
+    transform: scale(0.9);
   }
-
-  @keyframes card-scale {
-    0% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
   }
+}
 
-  .card:hover {
-    transform: translateY(-5px);
-    background-color: #b3d9ff;
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #b3d9ff;
+}
+.modal-body {
+  display: flex;
+  justify-content: center;
+}
+.modal-body img {
+  height: 50vh;
+  margin: 0 auto;
+}
+.card img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card p {
+  margin-top: 1em;
+  color: #555;
+}
+#error-message {
+  display: none;
+  color: red;
+  font-size: 13px;
+  width: 80%;
+  margin: -10px auto;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  visibility: hidden;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-
-  .card img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 5px;
+  100% {
+    transform: rotate(360deg);
   }
+}
+.nothing-found {
+  visibility: hidden;
+  text-align: center;
+  padding: 2em;
+  font-size: 20px;
+  color: #555;
+}
 
-  .card p {
-    margin-top: 1em;
-    color: #555;
-  }
-  #error-message {
-    display: none;
-    color: red;
-    font-size: 13px;
-    width: 80%;
-    margin: -10px auto;
-  }
+.sad-emoji {
+  font-size: 40px;
+  margin-top: 10px;
+}
+.button-container {
+  width: 80%;
+  margin: auto;
+  visibility: hidden;
+  text-align: center;
+}
+.cool-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
 
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    visibility: hidden;
-  }
-
-  .loading-spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-top: 4px solid #333;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  .nothing-found {
-    visibility: hidden;
-        text-align: center;
-        padding: 2em;
-        font-size: 20px;
-        color: #555;
-    }
-
-    .sad-emoji {
-        font-size: 40px;
-        margin-top: 10px;
-    }
-    .button-container{
-      width: 80%;
-      margin: auto;
-      visibility: hidden;
-      text-align: center;
-    }
-    .cool-button {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 18px;
-      color: white;
-      background-color: #3498db;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-
-    }
-  
-    /* Hover effect */
-    .cool-button:hover {
-      background-color: #2980b9;
-      transform: scale(1.05);
-    }
+/* Hover effect */
+.cool-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
