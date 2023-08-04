@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nothingFound.style.visibility = "visible";
       return;
     }
-    clearContainer();
 
     if (allMobileData.length > 10) {
       buttonContainer.style.visibility = "visible";
@@ -76,12 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showAllButton.addEventListener("click", () => {
       buttonContainer.style.visibility = "hidden";
-      clearContainer();
-      printElements(firstPortion);
-      printElements(restPortion);
+      printElements(allMobileData);
     });
 
     function printElements(arrayOfMobiles) {
+      clearContainer();
       nothingFound.style.visibility = "hidden";
       arrayOfMobiles.forEach((mobile) => {
         const card = document.createElement("div");
