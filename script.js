@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function printElements(arrayOfMobiles) {
       clearContainer();
       nothingFound.style.visibility = "hidden";
-      arrayOfMobiles.forEach((mobile) => {
+      arrayOfMobiles.forEach((mobile, index) => {
         const card = document.createElement("div");
         card.classList.add("card");
 
@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <p>${mobile.phone_name}</p>
         <button onclick="call('${mobile.phone_name}', '${mobile.image}')"  class="btn bg-warning" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Expand</button>
         `;
+        setTimeout(()=>{
+          card.classList.add("animate");
+        },index*100)
         mainContainer.appendChild(card);
       });
     }
